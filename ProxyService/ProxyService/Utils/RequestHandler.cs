@@ -15,6 +15,12 @@ namespace ProxyService.Controllers
         }
 
         private Boolean validateRequestHeaders(){
+            //Request.Method
+            //Request.Path
+            //Request.Body - in case of post
+            //Request.ContentLength
+            //Request.ContentType
+            
             return false;
         }
     }

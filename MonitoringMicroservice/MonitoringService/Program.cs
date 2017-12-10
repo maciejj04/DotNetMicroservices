@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace ProxyService
+namespace MonitoringService
 {
     public class Program
     {
@@ -19,7 +19,7 @@ namespace ProxyService
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://localhost:5001/")
+                .UseUrls("http://localhost:5002/")
                 .UseStartup<Startup>()
                 .Build();
     }
