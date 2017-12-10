@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  microservicestemplate:
+    image: microservices-template
+    ports:
+      - "5000:5000"
+    build:
+      context: ./BusinessService/MicroserviceTemplateService/cqrs_webapi
+      dockerfile: Dockerfile
+
+  proxyservice:
+    image: proxy-service
+    ports:
+      - "5001:5001"
+    build:
+      context: ./ProxyService/ProxyService
+      dockerfile: Dockerfile
+
+  monitoringservice:
+    image: monitoring-service
+    ports:
+      - "5002:5002"
+    build:
+      context: ./MonitoringService/MonitoringService
+      dockerfile: Dockerfile

@@ -17,15 +17,10 @@ namespace ProxyService.Controllers
         [Route("api/{*url}")]
         public string Get()
         {
-            RequestHandler requestHandler = new RequestHandler(Request);
             MonitorRequest monitorRequest = new MonitorRequest(Request.Path, DateTime.Now, Type.REQUEST);
             monitorRequest.send();
-            // TODO: Add headers
-            //           -> pass to Monitor
-            //           -> pass to BusinessService: wait for response and then:
-            //                  -> pass to Monitor with same headers. 
-            using(var httpClient = new HttpClient()){
 
+            using(var httpClient = new HttpClient()){
                 // TODO: no need to copy body when GET;
                 var memStream = new System.IO.MemoryStream();
                 Request.Body.CopyTo(memStream);
@@ -36,6 +31,7 @@ namespace ProxyService.Controllers
                 {
                     text = reader.ReadToEnd();
                 }
+                
                 Task<HttpResponseMessage> result;
                 switch(Request.Method){
                     case "GET":
